@@ -5,13 +5,19 @@
 using namespace std;
 
 
+ long double factorial(long int num) {
+	if (num == 0)
+		return 1;
+	else return num * factorial(num - 1);
+}
+
 int main() {
+	long int num = 1;
 
-	int s = 27;
-	int a = 3;
+	while(num <= 1024)
+		cout << "!" << num << " = " << factorial(num++) << endl;
 
-	cout << log(s) / log(a);
-
-	_getch();
+	system("pause");
 	return 0;
 }
+

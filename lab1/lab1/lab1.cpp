@@ -2,29 +2,44 @@
 #include <conio.h>
 #include <cmath>
 #include <cstdlib>
+#include <random>
 
 using namespace std;
 
-int main() {
-
-	cout << "Enter numb: \t";
-	int num = 0;
-	cin >> num;
-
-	cout << "\n" << num << " is your num\n";
-
-	_getch();
-	return 0;
-}
 
 int NumIsLog3(int num) {
 
-	if (!num < 0) {
-
+	// num >= 1 и дробная часть должна быть ровна нулю
+	if (!(num < 1) && (num % 3 == 0 || num == 1)) {
 		
+		//3^0 = 1
+		if (num == 1)
+			return 0;
 
+		int upper = 1;
+		while (pow(3, upper) != num) {
+			upper++;
+			if (pow(3, upper) > num)
+				return -1;
+		}
+		return upper;
 	}
 
-	// if %num% != 3^n 
 	return -1;
 }
+
+int main() {
+
+	int* num = new int[] {0, 1, 10, 30, 27, 9, 15, 21, 24, 3};
+
+	for (int i = 0; i < 10; i++) {
+		int result = NumIsLog3(num[i]);
+		if (result != -1)
+			cout << num[i] << " = 3^" << result << endl;
+		else cout << num[i] << " != 3^n" << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+
