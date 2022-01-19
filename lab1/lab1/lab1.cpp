@@ -18,9 +18,12 @@ int NumIsLog3(int num) {
 
 		int upper = 1;
 		while (pow(3, upper) != num) {
-			upper++;
+			
 			if (pow(3, upper) > num)
 				return -1;
+
+			upper++;
+			
 		}
 		return upper;
 	}
